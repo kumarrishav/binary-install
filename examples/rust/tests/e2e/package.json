@@ -3,12 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "bin": {
+    "binary-install-example": "./run.js"
+  },
   "scripts": {
-    "test": "binary-install-example -ccc"
+    "test": "binary-install-example -cccc | node ./index.js"
   },
   "author": "Avery Harnish",
   "license": "MIT",
   "devDependencies": {
-    "binary-install-example": "file:../../npm"
+    "binary-install": "file:../../npm"
   }
 }
