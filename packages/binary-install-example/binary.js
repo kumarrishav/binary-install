@@ -8,7 +8,6 @@
 
 const { Binary } = require("binary-install");
 const os = require("os");
-const { join } = require("path");
 const cTable = require("console.table");
 
 const error = msg => {
@@ -62,7 +61,7 @@ const getBinary = () => {
   // the url for this binary is constructed from values in `package.json`
   // https://github.com/EverlastingBugstopper/binary-install/releases/download/v1.0.0/binary-install-example-v1.0.0-x86_64-apple-darwin.tar.gz
   const url = `${repository.url}/releases/download/v${version}/${name}-v${version}-${platform}.tar.gz`;
-  return new Binary(url, { name });
+  return new Binary(name, url);
 };
 
 const run = () => {
@@ -75,13 +74,7 @@ const install = () => {
   binary.install();
 };
 
-const uninstall = () => {
-  const binary = getBinary();
-  binary.uninstall();
-};
-
 module.exports = {
   install,
-  run,
-  uninstall
+  run
 };

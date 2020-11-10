@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "postinstall": "lerna bootstrap",
+    "clean": "lerna clean",
     "test": "lerna run test",
     "fmt": "lerna run fmt",
     "fmt:check": "lerna run fmt:check"

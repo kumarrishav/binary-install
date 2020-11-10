@@ -8,7 +8,7 @@
   },
   "private": true,
   "scripts": {
-    "test": "binary-install-example -cccc | node ./index.js",
+    "test": "binary-install-example -cccc | node ./stdout.js && echo \"hello\" | binary-install-example echo | node ./stdin.js && binary-install-example | node ./stderr.js",
     "fmt": "prettier --write **/*.js",
     "fmt:check": "prettier --check **/*.js"
   },

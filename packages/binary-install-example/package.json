@@ -9,7 +9,6 @@
   },
   "scripts": {
     "postinstall": "node ./install.js",
-    "preuninstall": "node ./uninstall.js",
     "fmt": "prettier --write **/*.js",
     "fmt:check": "prettier --check **/*.js"
   },
