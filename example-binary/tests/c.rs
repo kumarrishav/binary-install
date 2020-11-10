@@ -1,12 +1,10 @@
-use assert_cmd::prelude::*;
-use std::env;
-use std::process::Command;
+use assert_cmd::Command;
 
 #[test]
 fn it_cannot_c() {
     get_bin()
         .assert()
-        .stdout(predicates::str::contains("didn't"))
+        .stderr(predicates::str::contains("didn't"))
         .success();
 }
 
