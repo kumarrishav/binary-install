@@ -31,11 +31,13 @@ class Binary {
       errors.push("You must specify the name of your binary");
     }
     if (errors.length > 0) {
-      let errorMsg = "One or more of the parameters you passed to the Binary constructor are invalid:\n";
+      let errorMsg =
+        "One or more of the parameters you passed to the Binary constructor are invalid:\n";
       errors.forEach(error => {
         errorMsg += error;
       });
-      errorMsg += "\n\nCorrect usage: new Binary(\"my-binary\", \"https://example.com/binary/download.tar.gz\")"
+      errorMsg +=
+        '\n\nCorrect usage: new Binary("my-binary", "https://example.com/binary/download.tar.gz")';
       error(errorMsg);
     }
     this.url = url;
