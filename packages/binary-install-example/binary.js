@@ -21,21 +21,24 @@ const supportedPlatforms = [
   {
     TYPE: "Windows_NT",
     ARCHITECTURE: "x64",
-    RUST_TARGET: "x86_64-pc-windows-msvc"
+    RUST_TARGET: "x86_64-pc-windows-msvc",
+    BINARY_NAME: "binary-install-example.exe"
   },
   {
     TYPE: "Linux",
     ARCHITECTURE: "x64",
-    RUST_TARGET: "x86_64-unknown-linux-musl"
+    RUST_TARGET: "x86_64-unknown-linux-musl",
+    BINARY_NAME: "binary-install-example"
   },
   {
     TYPE: "Darwin",
     ARCHITECTURE: "x64",
-    RUST_TARGET: "x86_64-apple-darwin"
+    RUST_TARGET: "x86_64-apple-darwin",
+    BINARY_NAME: "binary-install-example"
   }
 ];
 
-const getPlatform = () => {
+const getPlatformMetadata = () => {
   const type = os.type();
   const architecture = os.arch();
 
@@ -45,7 +48,7 @@ const getPlatform = () => {
       type === supportedPlatform.TYPE &&
       architecture === supportedPlatform.ARCHITECTURE
     ) {
-      return supportedPlatform.RUST_TARGET;
+      return supportedPlatform;
     }
   }
 
@@ -57,11 +60,11 @@ const getPlatform = () => {
 };
 
 const getBinary = () => {
-  const platform = getPlatform();
+  const platformMetadata = getPlatformMetadata();
   // the url for this binary is constructed from values in `package.json`
   // https://github.com/EverlastingBugstopper/binary-install/releases/download/v1.0.0/binary-install-example-v1.0.0-x86_64-apple-darwin.tar.gz
-  const url = `${repository.url}/releases/download/v${version}/${name}-v${version}-${platform}.tar.gz`;
-  return new Binary(name, url);
+  const url = `${repository.url}/releases/download/v${version}/${name}-v${version}-${platformMetadata.RUST_TARGET}.tar.gz`;
+  return new Binary(platformMetadata.name, url);
 };
 
 const run = () => {
