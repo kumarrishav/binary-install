@@ -51,7 +51,7 @@ class Binary {
     this.binaryPath = join(this.installDirectory, this.name);
   }
 
-  install() {
+  install(fetchOptions) {
     if (existsSync(this.installDirectory)) {
       rimraf.sync(this.installDirectory);
     }
@@ -60,7 +60,7 @@ class Binary {
 
     console.log(`Downloading release from ${this.url}`);
 
-    return axios({ url: this.url, responseType: "stream" })
+    return axios({ ...fetchOptions, url: this.url, responseType: "stream" })
       .then(res => {
         res.data.pipe(tar.x({ strip: 1, C: this.installDirectory }));
       })

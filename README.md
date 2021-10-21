@@ -7,10 +7,12 @@ Install .tar.gz binary applications via npm
 This library provides a single class `Binary` that takes the name of your binary, and download url.
 
 ```js
-let binary = new Binary("my-binary", "https://example.com/binary/tar.gz")
+let binary = new Binary('my-binary', 'https://example.com/binary/tar.gz')
 ```
 
 After your `Binary` has been created, you can run `.install()` to install the binary, and `.run()` to run it.
+
+`install()` takes an optional argument of additional options to pass to Axios when downloading the binary. This is useful for downloading from a private repo when you have to set an `Authorization` header.
 
 ### Example
 
