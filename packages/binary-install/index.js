@@ -68,7 +68,7 @@ class Binary {
         console.log(`${this.name} has been installed!`);
       })
       .catch(e => {
-        error(`Error fetching release: ${e.message}`);
+        error(`Error fetching release: ${e} ${e.message}`);
       });
   }
 
